@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoML Web Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h2>AutoML Platform</h2>
+            </div>
+            <div class="navbar-nav">
+                <button class="btn btn--outline btn--sm" id="resetBtn">Reset Application</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert alert-danger">{{ messages[0] }}</div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="text-center mt-4 mb-2 text-muted">
+        &copy; 2025 - AutoML Flask Application
+    </footer>
+</body>
+</html>
